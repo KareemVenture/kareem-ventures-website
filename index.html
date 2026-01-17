@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Indonesia's first integrated platform enabling SMEs to structure social giving through Islamic Waqf contracts." />
+    <meta name="theme-color" content="#0f4c3a" />
+    <title>Kareem Ventures | The Operating System for Islamic Capital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+            colors: {
+              kareem: {
+                teal: '#0f4c3a', 
+                dark: '#052e22',
+                gold: '#c5a028',
+                accent: '#10b981', 
+                sand: '#f8f9fa',
+                slate: '#e2e8f0',
+              }
+            },
+            boxShadow: {
+              'fintech': '0 4px 20px -2px rgba(15, 76, 58, 0.05)',
+              'fintech-hover': '0 20px 40px -5px rgba(15, 76, 58, 0.1)',
+              'glow': '0 0 30px rgba(16, 185, 129, 0.2)',
+            },
+            borderRadius: {
+              '4xl': '2.5rem',
+            },
+            animation: {
+              'blob': 'blob 20s infinite',
+              'spin-slow': 'spin-slow 60s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'marquee': 'marquee 25s linear infinite',
+            },
+            backgroundImage: {
+              'gradient-mesh': 'radial-gradient(at 0% 0%, hsla(163,62%,97%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(45,100%,96%,1) 0, transparent 50%), radial-gradient(at 100% 100%, hsla(163,62%,97%,1) 0, transparent 50%)',
+              'gradient-luxury': 'linear-gradient(135deg, #0f4c3a 0%, #052e22 100%)',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              'spin-slow': {
+                'from': { transform: 'rotate(0deg)' },
+                'to': { transform: 'rotate(360deg)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-100%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #ffffff;
+      }
+      
+      /* Islamic Geometric Pattern Overlay */
+      .bg-pattern-islamic {
+        background-color: transparent;
+        background-image: 
+          radial-gradient(#0f4c3a 0.5px, transparent 0.5px), 
+          radial-gradient(#0f4c3a 0.5px, transparent 0.5px);
+        background-size: 30px 30px;
+        background-position: 0 0, 15px 15px;
+        opacity: 0.05;
+      }
+
+      .bg-pattern-islamic-dark {
+        background-color: transparent;
+        background-image: 
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), 
+          radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+        opacity: 0.1;
+      }
+      
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@0.292.0",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8"
+  }
+}
+</script>
+</head>
+  <body class="bg-white text-slate-900 transition-colors duration-500 overflow-x-hidden selection:bg-kareem-teal selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
