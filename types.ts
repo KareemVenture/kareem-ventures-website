@@ -21,6 +21,7 @@ export interface TeamMember {
   role: string;
   ex: string;
   image?: string;
+  linkedin?: string;
 }
 
 export interface FAQItem {
@@ -119,6 +120,12 @@ export interface Translations {
   faq: {
     subtitle: string;
     items: FAQItem[];
+  };
+  blog: {
+    title: string;
+    subtitle: string;
+    viewAll: string;
+    items: BlogItem[];
   };
   footer: {
     contactTitle: string;

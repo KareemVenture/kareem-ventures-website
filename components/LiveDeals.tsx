@@ -1,12 +1,11 @@
 import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Building, Clock, Users, Target, School, Stethoscope, Wheat, GraduationCap, HeartPulse, Factory } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin, Building, Clock, Target, Wheat, GraduationCap, HeartPulse } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface LiveDealsProps {
   t: any;
 }
 
-// Genericized opportunities for a New Player launch
 const opportunities = [
   {
     title: "Tier-1 Islamic School Network",
@@ -49,59 +48,43 @@ const opportunities = [
   }
 ];
 
-// FIX: Explicit Class Mapping for Tailwind JIT
 const DealVisual = ({ theme, Icon }: { theme: string, Icon: any }) => {
     
+    // Mapping for dark mode colors
     const colors = {
         emerald: {
-            bg: "bg-emerald-50",
-            icon: "text-emerald-600",
-            pattern: "text-emerald-900/5",
-            blob: "bg-emerald-50",
-            border: "border-emerald-100"
+            bg: "bg-emerald-50 dark:bg-emerald-500/10",
+            icon: "text-emerald-600 dark:text-emerald-400",
+            border: "border-emerald-100 dark:border-emerald-500/20"
         },
         rose: {
-            bg: "bg-rose-50",
-            icon: "text-rose-600",
-            pattern: "text-rose-900/5",
-            blob: "bg-rose-50",
-            border: "border-rose-100"
+            bg: "bg-rose-50 dark:bg-rose-500/10",
+            icon: "text-rose-600 dark:text-rose-400",
+            border: "border-rose-100 dark:border-rose-500/20"
         },
         amber: {
-            bg: "bg-amber-50",
-            icon: "text-amber-600",
-            pattern: "text-amber-900/5",
-            blob: "bg-amber-50",
-            border: "border-amber-100"
+            bg: "bg-amber-50 dark:bg-amber-500/10",
+            icon: "text-amber-600 dark:text-amber-400",
+            border: "border-amber-100 dark:border-amber-500/20"
         }
     };
 
-    // Fallback to emerald if theme not found
     const c = colors[theme as keyof typeof colors] || colors.emerald;
 
     return (
-        <div className={`h-48 w-full ${c.bg} relative overflow-hidden flex items-center justify-center`}>
-            {/* Abstract Pattern Background */}
-            <div className={`absolute inset-0 ${c.pattern}`}>
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id={`grid-${theme}`} width="20" height="20" patternUnits="userSpaceOnUse">
-                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="1"/>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill={`url(#grid-${theme})`} />
-                </svg>
-            </div>
+        <div className={`h-40 w-full ${c.bg} relative overflow-hidden flex items-center justify-center border-b ${c.border} transition-colors duration-500`}>
+            <div className="absolute inset-0 bg-grid-white opacity-[0.1]"></div>
             
-            {/* Decorative Circles */}
-            <div className={`absolute top-0 right-0 w-32 h-32 rounded-full ${c.blob} mix-blend-multiply filter blur-2xl opacity-80 translate-x-1/3 -translate-y-1/3`}></div>
-            <div className={`absolute bottom-0 left-0 w-24 h-24 rounded-full ${c.blob} mix-blend-multiply filter blur-xl opacity-80 -translate-x-1/3 translate-y-1/3`}></div>
+            {/* Glow Blob */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 ${c.bg} blur-2xl rounded-full`}></div>
 
-            {/* Central Icon Composition */}
             <div className="relative z-10 flex flex-col items-center">
-                <div className="w-20 h-20 bg-white rounded-2xl shadow-sm border border-white/50 flex items-center justify-center mb-3">
-                    <Icon className={`w-10 h-10 ${c.icon}`} strokeWidth={1.5} />
-                </div>
+                <motion.div 
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    className={`w-16 h-16 bg-white dark:bg-slate-950 rounded-2xl shadow-lg border ${c.border} flex items-center justify-center mb-3 transition-colors duration-500`}
+                >
+                    <Icon className={`w-8 h-8 ${c.icon}`} strokeWidth={1.5} />
+                </motion.div>
             </div>
         </div>
     );
@@ -123,31 +106,33 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
   };
 
   return (
-    <section id="opportunities" className="py-20 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
-       {/* Background */}
-       <div className="absolute inset-0 bg-pattern-islamic opacity-40 pointer-events-none"></div>
+    <section id="opportunities" className="py-24 bg-[#f8fafc] dark:bg-[#0a0f1e] relative overflow-hidden transition-colors duration-500">
+      
+      {/* Mesh Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] dark:bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+      
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header - Scarcity Framing */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div>
             <div className="flex items-center gap-2 mb-3">
-                 <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+                <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
-                <span className="text-rose-600 font-bold text-[10px] uppercase tracking-widest">Live Opportunities</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest">Live Opportunities</span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Curated <span className="text-slate-400">Deal Flow</span></h3>
-            <p className="text-sm text-slate-500 mt-2 max-w-md">Verified productive assets open for immediate institutional deployment.</p>
+            <h3 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Curated <span className="text-slate-400 dark:text-slate-500">Deal Flow</span></h3>
           </div>
           
           <div className="flex gap-2">
-            <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white border border-slate-200 hover:border-kareem-teal hover:text-kareem-teal transition-all shadow-sm">
+            <button onClick={() => scroll('left')} className="p-3 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-emerald-500 hover:text-emerald-600 dark:hover:bg-emerald-500/20 dark:hover:border-emerald-500/50 dark:hover:text-emerald-400 transition-all text-slate-500 dark:text-white shadow-sm dark:shadow-none">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white border border-slate-200 hover:border-kareem-teal hover:text-kareem-teal transition-all shadow-sm">
+            <button onClick={() => scroll('right')} className="p-3 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-emerald-500 hover:text-emerald-600 dark:hover:bg-emerald-500/20 dark:hover:border-emerald-500/50 dark:hover:text-emerald-400 transition-all text-slate-500 dark:text-white shadow-sm dark:shadow-none">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
@@ -163,50 +148,46 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
                     key={idx} 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -8 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="min-w-[300px] md:min-w-[380px] bg-white rounded-[1.5rem] border border-slate-200 shadow-sm hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-300 group snap-center cursor-pointer relative overflow-hidden flex flex-col"
+                    className="min-w-[320px] md:min-w-[380px] bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl group snap-center cursor-pointer relative overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-300"
                 >
                     <a href="#contact" className="block h-full w-full">
-                        {/* Custom Visual Header */}
                         <div className="relative">
                             <DealVisual theme={opp.theme} Icon={opp.icon} />
                             <div className="absolute top-4 left-4">
-                                 <span className={`px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wide border bg-white/95 backdrop-blur ${opp.status === 'Open' ? 'text-emerald-700 border-emerald-100' : 'text-rose-600 border-rose-100'}`}>
+                                 <span className={`px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wide border backdrop-blur-md ${opp.status === 'Open' ? 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 dark:border-emerald-500/30' : 'bg-rose-50 border-rose-200 text-rose-700 dark:bg-rose-500/20 dark:text-rose-400 dark:border-rose-500/30'}`}>
                                     {opp.status}
                                  </span>
                             </div>
                         </div>
 
-                        <div className="p-5 md:p-6 flex-1 flex flex-col">
-                            
-                            {/* Title & Location */}
+                        <div className="p-6 flex-1 flex flex-col">
                             <div className="mb-6">
-                                 <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wide mb-1 flex items-center gap-1">
+                                 <div className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wide mb-1 flex items-center gap-1">
                                     <Building className="w-3 h-3" /> {opp.category}
                                  </div>
-                                 <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-1 group-hover:text-kareem-teal transition-colors leading-tight">{opp.title}</h4>
-                                 <div className="flex items-center gap-1 text-xs text-slate-400">
+                                 <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-tight">{opp.title}</h4>
+                                 <div className="flex items-center gap-1 text-xs text-slate-500">
                                     <MapPin className="w-3 h-3" /> {opp.location}
                                  </div>
                             </div>
 
-                            {/* Financials */}
                             <div className="grid grid-cols-2 gap-3 mb-6">
-                                 <div className="p-3 bg-emerald-50/50 rounded-xl border border-emerald-100">
-                                     <div className="text-[9px] text-slate-400 uppercase font-bold mb-1">Proj. Yield (p.a)</div>
-                                     <div className="text-base font-bold text-emerald-700 flex items-center gap-1">
+                                 <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/10 group-hover:bg-slate-100 dark:group-hover:bg-white/10 transition-colors">
+                                     <div className="text-[9px] text-slate-500 dark:text-slate-400 uppercase font-bold mb-1">Proj. Yield</div>
+                                     <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                                         {opp.yield} <ArrowUpRight className="w-3 h-3" />
                                      </div>
                                  </div>
-                                 <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                     <div className="text-[9px] text-slate-400 uppercase font-bold mb-1">Social Impact</div>
-                                     <div className="text-base font-bold text-slate-700 flex items-center gap-1">
+                                 <div className="p-3 bg-slate-50 dark:bg-white/5 rounded-xl border border-slate-100 dark:border-white/10 group-hover:bg-slate-100 dark:group-hover:bg-white/10 transition-colors">
+                                     <div className="text-[9px] text-slate-500 dark:text-slate-400 uppercase font-bold mb-1">Impact</div>
+                                     <div className="text-lg font-bold text-slate-700 dark:text-slate-200">
                                          {opp.impact}
                                      </div>
                                  </div>
                             </div>
 
-                            {/* Details Row */}
                             <div className="flex justify-between items-center text-xs text-slate-500 mb-6 px-1">
                                  <div className="flex items-center gap-1.5">
                                      <Clock className="w-3.5 h-3.5" />
@@ -218,18 +199,17 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
                                  </div>
                             </div>
 
-                            {/* Progress Bar */}
                             <div className="mt-auto">
-                                <div className="flex justify-between text-xs font-bold text-slate-700 mb-2">
+                                <div className="flex justify-between text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">
                                     <span>{opp.raised}% Funded</span>
-                                    <span className="text-emerald-600">~IDR {(opp.raised * 0.05).toFixed(1)}B Raised</span>
+                                    <span className="text-emerald-600 dark:text-emerald-500">~IDR {(opp.raised * 0.05).toFixed(1)}B Raised</span>
                                 </div>
-                                <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div className="w-full h-1.5 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
                                     <motion.div 
                                         initial={{ width: 0 }}
                                         whileInView={{ width: `${opp.raised}%` }}
                                         transition={{ duration: 1.5, ease: "easeOut" }}
-                                        className="h-full bg-emerald-500 rounded-full"
+                                        className="h-full bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                                     ></motion.div>
                                 </div>
                             </div>
@@ -238,11 +218,9 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
                 </motion.div>
             ))}
             
-            {/* CTA Card */}
              <div className="min-w-[200px] flex items-center justify-center snap-center">
-                 {/* QA FIX: Added anchor tag to make this functional */}
-                 <a href="#contact" className="w-20 h-20 rounded-full border-2 border-dashed border-slate-300 flex flex-col gap-2 items-center justify-center text-slate-400 hover:border-kareem-teal hover:text-kareem-teal hover:bg-emerald-50 transition-all group">
-                     <ArrowUpRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                 <a href="#contact" className="w-24 h-24 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 flex flex-col gap-2 items-center justify-center text-slate-400 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 transition-all group backdrop-blur-md shadow-sm dark:shadow-none hover:scale-105">
+                     <ArrowUpRight className="w-8 h-8 group-hover:scale-110 transition-transform" />
                      <span className="text-[10px] font-bold uppercase tracking-wide">View All</span>
                  </a>
              </div>

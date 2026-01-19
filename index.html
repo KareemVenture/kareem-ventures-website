@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Indonesia's first integrated platform enabling SMEs to structure social giving through Islamic Waqf contracts." />
-    <meta name="theme-color" content="#0f4c3a" />
+    <meta name="theme-color" content="#020617" />
     <title>Kareem Ventures | The Operating System for Islamic Capital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,44 +20,41 @@
               sans: ['Plus Jakarta Sans', 'sans-serif'],
             },
             colors: {
+              slate: {
+                850: '#151e2e',
+                900: '#0f172a',
+                950: '#020617', // Main background
+              },
               kareem: {
-                teal: '#0f4c3a', 
-                dark: '#052e22',
-                gold: '#c5a028',
-                accent: '#10b981', 
+                teal: '#10b981', // Neon Emerald
+                dark: '#020617',
+                gold: '#fbbf24',
+                accent: '#34d399', 
                 sand: '#f8f9fa',
-                slate: '#e2e8f0',
               }
             },
             boxShadow: {
-              'fintech': '0 4px 20px -2px rgba(15, 76, 58, 0.05)',
-              'fintech-hover': '0 20px 40px -5px rgba(15, 76, 58, 0.1)',
-              'glow': '0 0 30px rgba(16, 185, 129, 0.2)',
-            },
-            borderRadius: {
-              '4xl': '2.5rem',
+              'glow': '0 0 40px -10px rgba(16, 185, 129, 0.3)',
+              'glow-gold': '0 0 40px -10px rgba(251, 191, 36, 0.2)',
             },
             animation: {
               'blob': 'blob 20s infinite',
-              'spin-slow': 'spin-slow 60s linear infinite',
               'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'marquee': 'marquee 25s linear infinite',
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'marquee': 'marquee 30s linear infinite',
+              'spotlight': 'spotlight 2s ease .75s 1 forwards',
+              'gradient-x': 'gradient-x 15s ease infinite',
             },
             backgroundImage: {
-              'gradient-mesh': 'radial-gradient(at 0% 0%, hsla(163,62%,97%,1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(45,100%,96%,1) 0, transparent 50%), radial-gradient(at 100% 100%, hsla(163,62%,97%,1) 0, transparent 50%)',
-              'gradient-luxury': 'linear-gradient(135deg, #0f4c3a 0%, #052e22 100%)',
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #020617 0deg, #10b981 180deg, #020617 360deg)',
             },
             keyframes: {
               blob: {
                 '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                 '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              },
-              'spin-slow': {
-                'from': { transform: 'rotate(0deg)' },
-                'to': { transform: 'rotate(360deg)' },
               },
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
@@ -66,7 +63,17 @@
               marquee: {
                 '0%': { transform: 'translateX(0%)' },
                 '100%': { transform: 'translateX(-100%)' },
-              }
+              },
+              'gradient-x': {
+                '0%, 100%': {
+                    'background-size': '200% 200%',
+                    'background-position': 'left center'
+                },
+                '50%': {
+                    'background-size': '200% 200%',
+                    'background-position': 'right center'
+                },
+              },
             }
           }
         }
@@ -75,30 +82,59 @@
     <style>
       body {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: #ffffff;
       }
       
-      /* Islamic Geometric Pattern Overlay */
-      .bg-pattern-islamic {
-        background-color: transparent;
-        background-image: 
-          radial-gradient(#0f4c3a 0.5px, transparent 0.5px), 
-          radial-gradient(#0f4c3a 0.5px, transparent 0.5px);
-        background-size: 30px 30px;
-        background-position: 0 0, 15px 15px;
-        opacity: 0.05;
+      /* Modern Grid Background */
+      .bg-grid-white {
+        background-size: 50px 50px;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+        -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+      }
+      
+      .dark .bg-grid-white {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
       }
 
-      .bg-pattern-islamic-dark {
-        background-color: transparent;
-        background-image: 
-          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), 
-          radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-        background-size: 40px 40px;
-        background-position: 0 0, 20px 20px;
-        opacity: 0.1;
+      html:not(.dark) .bg-grid-white {
+         background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      }
+
+      /* Dot Pattern */
+      .bg-dot-pattern {
+        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+      .dark .bg-dot-pattern {
+        background-image: radial-gradient(#334155 1px, transparent 1px);
+      }
+
+      /* Glass Card - Adaptive */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      .dark .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+      }
+
+      .dark .glass-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        box-shadow: 0 0 30px -10px rgba(16, 185, 129, 0.2);
       }
       
       .hide-scrollbar::-webkit-scrollbar {
@@ -107,6 +143,30 @@
       .hide-scrollbar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+      }
+      
+      .text-gradient {
+        background: linear-gradient(to right, #1e293b, #64748b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .dark .text-gradient {
+        background: linear-gradient(to right, #ffffff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .text-gradient-emerald {
+        background: linear-gradient(to right, #059669, #10b981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .dark .text-gradient-emerald {
+        background: linear-gradient(to right, #34d399, #10b981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     </style>
   <script type="importmap">
@@ -122,7 +182,7 @@
 }
 </script>
 </head>
-  <body class="bg-white text-slate-900 transition-colors duration-500 overflow-x-hidden selection:bg-kareem-teal selection:text-white">
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white transition-colors duration-500 overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-700 dark:selection:text-emerald-200">
     <div id="root"></div>
   </body>
 </html>

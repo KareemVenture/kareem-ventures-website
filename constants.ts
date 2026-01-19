@@ -22,6 +22,29 @@ import {
 export const WHATSAPP_NUMBER = "6281234567890"; // Example number
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
+const BLOG_POSTS = [
+    { title: "The Alpha in Ethics: Why Productive Waqf Outperforms Traditional Charity", category: "Strategy", readTime: "5 min", date: "Oct 12" },
+    { title: "Tokenizing the Ummah: Blockchain Applications in Islamic Finance", category: "Tech", readTime: "7 min", date: "Oct 10" },
+    { title: "Structural Liquidity: Solving the Nadzir's Dilemma", category: "Finance", readTime: "4 min", date: "Oct 08" },
+    { title: "Sukuk vs. Equity Waqf: A Comparative Risk Analysis", category: "Analysis", readTime: "6 min", date: "Oct 05" },
+    { title: "The Trillion Dollar Gap: Global Islamic Economy Report 2024", category: "Market", readTime: "5 min", date: "Oct 01" },
+    { title: "Digital Rails for Divine Duties", category: "Tech", readTime: "3 min", date: "Sep 28" },
+    { title: "Impact Telemetry: Measuring Social ROI", category: "Impact", readTime: "5 min", date: "Sep 25" },
+    { title: "Regulatory Sandboxes: BI's Stance on Waqf Fintech", category: "Legal", readTime: "8 min", date: "Sep 22" },
+    { title: "Asset Class Diversification in Islamic Portfolios", category: "Finance", readTime: "6 min", date: "Sep 18" },
+    { title: "The Modern Mutawalli: Governance Standards", category: "Governance", readTime: "4 min", date: "Sep 15" },
+    { title: "Venture Philanthropy: The New CSR", category: "Strategy", readTime: "5 min", date: "Sep 12" },
+    { title: "Smart Contracts for Mudarabah", category: "Tech", readTime: "6 min", date: "Sep 10" },
+    { title: "SME Credit Scoring via Supply Chain Data", category: "Data", readTime: "5 min", date: "Sep 08" },
+    { title: "Real Estate Waqf: Commercialization Strategies", category: "Real Estate", readTime: "7 min", date: "Sep 05" },
+    { title: "Cash Waqf Linked Sukuk (CWLS): A Deep Dive", category: "Finance", readTime: "9 min", date: "Sep 02" },
+    { title: "Intergenerational Wealth Transfer via Waqf", category: "Family Office", readTime: "5 min", date: "Aug 30" },
+    { title: "Risk Mitigation in Agricultural Waqf", category: "Risk", readTime: "6 min", date: "Aug 28" },
+    { title: "The Role of AI in Sharia Screening", category: "Tech", readTime: "4 min", date: "Aug 25" },
+    { title: "Healthcare Infrastructure as a Service", category: "Impact", readTime: "5 min", date: "Aug 22" },
+    { title: "Islamic Fintech Valuation Multiples 2024", category: "Market", readTime: "7 min", date: "Aug 20" }
+];
+
 export const CONTENT: Record<string, Translations> = {
   en: {
     meta: {
@@ -116,10 +139,10 @@ export const CONTENT: Record<string, Translations> = {
       title: "The Architects",
       subtitle: "A team forged in hyper-growth tech companies and deep Islamic finance.",
       team: [
-        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "" },
-        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "" },
-        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "" },
-        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "" }
+        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
+        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
+        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
+        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
       ]
     },
     leadGen: {
@@ -166,6 +189,12 @@ export const CONTENT: Record<string, Translations> = {
                 answer: "We track both financial performance (dividends generated) and social output (students funded, patients served) via our real-time Nadzir dashboard, providing you with quarterly impact reports."
             }
         ]
+    },
+    blog: {
+        title: "Market Intelligence",
+        subtitle: "Analysis and perspectives on the intersection of faith, finance, and technology.",
+        viewAll: "View Journal",
+        items: BLOG_POSTS
     },
     footer: {
       contactTitle: "Inquiries",
@@ -266,10 +295,10 @@ export const CONTENT: Record<string, Translations> = {
       title: "Para Arsitek",
       subtitle: "Tim dari perusahaan teknologi pertumbuhan tinggi dan keuangan Islam.",
       team: [
-        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "" },
-        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "" },
-        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "" },
-        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "" }
+        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
+        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
+        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
+        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
       ]
     },
     leadGen: {
@@ -316,6 +345,12 @@ export const CONTENT: Record<string, Translations> = {
                 answer: "Kami melacak kinerja keuangan (dividen yang dihasilkan) dan output sosial (siswa didanai, pasien dilayani) melalui dashboard Nadzir real-time kami."
             }
         ]
+    },
+    blog: {
+        title: "Intelijen Pasar",
+        subtitle: "Analisis dan perspektif tentang persimpangan iman, keuangan, dan teknologi.",
+        viewAll: "Lihat Jurnal",
+        items: BLOG_POSTS
     },
     footer: {
       contactTitle: "Inquiries",

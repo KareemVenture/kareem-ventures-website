@@ -13,29 +13,46 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Lazy Load Below-the-Fold Components
 const MarketGap = React.lazy(() => import('./components/MarketGap'));
+const SolutionBridge = React.lazy(() => import('./components/SolutionBridge'));
+const Beneficiaries = React.lazy(() => import('./components/Beneficiaries'));
 const Process = React.lazy(() => import('./components/Process'));
+// Vision section hidden as per request
+// const Vision = React.lazy(() => import('./components/Vision'));
 const Credibility = React.lazy(() => import('./components/Credibility'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const FAQ = React.lazy(() => import('./components/FAQ'));
+const Blog = React.lazy(() => import('./components/Blog'));
 
 const LoadingFallback = () => (
-  <div className="py-24 flex justify-center items-center bg-slate-50">
-    <div className="w-8 h-8 border-4 border-slate-200 border-t-kareem-teal rounded-full animate-spin"></div>
+  <div className="py-24 flex justify-center items-center bg-slate-50 dark:bg-slate-950">
+    <div className="w-8 h-8 border-4 border-slate-200 dark:border-slate-800 border-t-emerald-500 rounded-full animate-spin"></div>
   </div>
 );
 
 function App() {
   const [lang, setLang] = useState<Language>('en');
-  const [theme, setTheme] = useState<Theme>('light'); 
+  
+  // Theme State with persistence
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      return (saved as Theme) || 'light';
+    }
+    return 'light';
+  });
+
   const [showScrollTop, setShowScrollTop] = useState(false);
   const t = CONTENT[lang];
 
+  // Apply Theme Logic
   useEffect(() => {
+    const root = document.documentElement;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
     }
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   // SEO: Update Meta Tags on Language Change
@@ -64,7 +81,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans antialiased selection:bg-kareem-teal selection:text-white bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col font-sans antialiased selection:bg-emerald-500/30 selection:text-emerald-700 dark:selection:text-emerald-200 bg-slate-50 dark:bg-slate-950 overflow-x-hidden text-slate-900 dark:text-white transition-colors duration-500">
       <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
       
       <main className="flex-grow">
@@ -75,11 +92,10 @@ function App() {
         <TrustBar t={t} />
 
         {/* 3. Product: The Assets (Show, don't just tell) */}
-        {/* STRATEGIC MOVE: Placed before Credibility/Problem to capture interest immediately */}
         <LiveDeals t={t} />
 
         {/* 4. Social Proof: The Talent */}
-        <div className="bg-white relative z-20">
+        <div className="bg-white dark:bg-slate-950 relative z-20 transition-colors duration-500">
             <LogoTicker />
         </div>
 
@@ -87,13 +103,25 @@ function App() {
           {/* 5. Context: The Problem */}
           <MarketGap t={t} />
 
-          {/* 6. Mechanism: The Rigor (How it works) */}
+          {/* 6. Solution: The Asset Classes */}
+          <Beneficiaries t={t} />
+
+          {/* 7. Platform: The Solution Bridge */}
+          <SolutionBridge t={t} />
+
+          {/* 8. Mechanism: The Rigor (How it works) */}
           <Process t={t} />
 
-          {/* 7. Trust: The Team Details */}
+          {/* 9. Vision: The Future (Hidden) */}
+          {/* <Vision t={t} /> */}
+
+          {/* 10. Thought Leadership: The Blog */}
+          <Blog t={t} />
+
+          {/* 11. Trust: The Team Details */}
           <Credibility t={t} />
 
-          {/* 8. Closing: Objections & Action */}
+          {/* 12. Closing: Objections & Action */}
           <FAQ t={t} />
           <Contact t={t} />
         </Suspense>
@@ -111,11 +139,11 @@ function App() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             whileHover={{ scale: 1.1 }}
-            className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg flex items-center justify-center group"
+            className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#25D366] text-white rounded-full shadow-[0_0_30px_rgba(37,211,102,0.4)] flex items-center justify-center group"
             aria-label="Chat on WhatsApp"
           >
             <MessageCircle className="w-7 h-7 fill-current" />
-            <span className="absolute right-full mr-4 bg-slate-900 text-white text-xs font-bold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl pointer-events-none">
+            <span className="absolute right-full mr-4 bg-slate-900 border border-white/10 text-white text-xs font-bold py-1.5 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl pointer-events-none">
               Chat with us
             </span>
           </motion.a>
