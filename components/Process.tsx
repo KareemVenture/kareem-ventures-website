@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stars, ScanLine, FileCheck, Server, Activity, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Search, Users, FileSignature, TrendingUp, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProcessProps {
@@ -7,104 +7,123 @@ interface ProcessProps {
 }
 
 const Process: React.FC<ProcessProps> = ({ t }) => {
-  return (
-    <section id="how-it-works" className="py-20 md:py-24 relative z-10 overflow-hidden bg-emerald-50/30 dark:bg-[#050a09] transition-colors duration-500">
-      
-      {/* Background Flow Lines */}
-      <div className="absolute inset-0">
-          <svg className="absolute w-full h-full opacity-30 dark:opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <motion.path 
-                d="M0,50 C20,40 40,60 60,50 C80,40 100,50 100,50" 
-                fill="none" 
-                stroke="currentColor" 
-                className="text-emerald-500" 
-                strokeWidth="0.5"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-              />
-          </svg>
-      </div>
-      
-      {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/5 dark:bg-kareem-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+  // Matched to the 4 steps: Verify (Shield/Check), Match (Users), Sign (Signature), Grow (TrendingUp)
+  const icons = [ShieldCheck, Users, FileSignature, TrendingUp];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        
-        <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white dark:bg-slate-900/50 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 rounded-full text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-4 shadow-sm dark:shadow-glow">
-                <Stars className="w-3 h-3 text-amber-500 dark:text-kareem-gold" />
-                The Operating System
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight leading-[1.1]">
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { 
+        staggerChildren: 0.25 
+      } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        type: "spring",
+        stiffness: 70,
+        damping: 20,
+        duration: 0.8
+      } 
+    }
+  };
+
+  return (
+    <section id="how-it-works" className="py-24 bg-slate-50 dark:bg-[#0B1121] border-t border-slate-200 dark:border-slate-800 relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-transparent to-transparent dark:from-slate-900/50 pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20 max-w-3xl mx-auto"
+        >
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest mb-3 block">Simple Process</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight font-serif">
                 {t.process.title}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto">
-               From legal structuring to impact reporting, we've digitized the entire Waqf lifecycle into one seamless flow.
-            </p>
-        </div>
+        </motion.div>
 
-        {/* Connected Steps Grid */}
-        <div className="grid md:grid-cols-4 gap-4 relative">
+        {/* Desktop Connected Workflow */}
+        <div className="relative">
             
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500/20 dark:via-emerald-500/30 to-transparent z-0"></div>
+            {/* Connecting Pipeline Line (Desktop) */}
+            <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800">
+                <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-shimmer"></div>
+            </div>
 
-            {t.process.steps.map((step: any, idx: number) => {
-                const icons = [ScanLine, FileCheck, Server, Activity];
-                const Icon = icons[idx];
-                
-                return (
-                    <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.15 }}
-                        className="relative z-10 group"
-                    >
+            <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
+            >
+                {t.process.steps.map((step: any, idx: number) => {
+                    const Icon = icons[idx] || Search;
+                    return (
                         <motion.div 
-                            whileHover={{ y: -5 }}
-                            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-white/5 p-5 rounded-2xl hover:border-emerald-500/30 dark:hover:border-emerald-500/40 hover:bg-white dark:hover:bg-slate-900 transition-all duration-300 h-full flex flex-col items-center text-center shadow-sm dark:shadow-lg"
+                            key={idx}
+                            variants={itemVariants}
+                            className="group relative"
                         >
-                            <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-4 group-hover:scale-110 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-900/30 transition-all duration-500 relative z-10 shadow-sm dark:shadow-glow-sm">
-                                <Icon className="w-6 h-6" strokeWidth={1.5} />
-                            </div>
-                            
-                            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">{step.title}</h3>
-                            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-light">{step.desc}</p>
-                            
-                            <div className="mt-4 pt-3 border-t border-slate-100 dark:border-white/5 w-full flex justify-center">
-                                <span className="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest group-hover:text-emerald-600 dark:group-hover:text-emerald-500/70 transition-colors">Step 0{idx + 1}</span>
+                            {/* Step Card */}
+                            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-900/5 h-full flex flex-col items-center text-center relative z-20 overflow-hidden transform group-hover:-translate-y-2">
+                                
+                                {/* Hover Gradient Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-transparent dark:from-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                                {/* Icon Container */}
+                                <div className="relative mb-6">
+                                    <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:border-emerald-500/50 transition-all duration-300 z-10 relative">
+                                        <Icon className="w-7 h-7 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" strokeWidth={1.5} />
+                                    </div>
+                                    {/* Number Badge */}
+                                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-emerald-600 dark:bg-emerald-500 text-white flex items-center justify-center text-xs font-bold border-4 border-white dark:border-slate-900 shadow-sm z-20">
+                                        {idx + 1}
+                                    </div>
+                                </div>
+                                
+                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors relative z-10">
+                                    {step.title}
+                                </h3>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light relative z-10">
+                                    {step.desc}
+                                </p>
+
+                                {/* Bottom Indicator */}
+                                <div className="mt-auto pt-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                                    <div className="w-8 h-1 bg-emerald-500 rounded-full mx-auto"></div>
+                                </div>
                             </div>
                         </motion.div>
-
-                        {/* Mobile Connector */}
-                        {idx < 3 && (
-                            <div className="md:hidden w-0.5 h-8 bg-emerald-500/20 dark:bg-emerald-500/30 mx-auto my-2"></div>
-                        )}
-                    </motion.div>
-                );
-            })}
+                    );
+                })}
+            </motion.div>
         </div>
 
-        {/* Value Prop Footer */}
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="mt-12 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-full border border-slate-200 dark:border-white/10 py-3 px-6 flex flex-wrap justify-center gap-6 md:gap-12 mx-auto w-fit shadow-sm dark:shadow-none"
+            transition={{ delay: 0.8 }}
+            className="mt-16 text-center"
         >
-             {t.process.valueProps.map((prop: string, i: number) => (
-                <div key={i} className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-xs font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wide">{prop}</span>
-                </div>
-             ))}
+             <a href="#contact" className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors group">
+                 <span>Start Now</span>
+                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+             </a>
         </motion.div>
-
       </div>
     </section>
   );

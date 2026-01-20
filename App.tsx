@@ -20,7 +20,7 @@ const Process = React.lazy(() => import('./components/Process'));
 // const Vision = React.lazy(() => import('./components/Vision'));
 const Credibility = React.lazy(() => import('./components/Credibility'));
 const Contact = React.lazy(() => import('./components/Contact'));
-const FAQ = React.lazy(() => import('./components/FAQ'));
+// const FAQ = React.lazy(() => import('./components/FAQ'));
 const Blog = React.lazy(() => import('./components/Blog'));
 
 const LoadingFallback = () => (
@@ -122,7 +122,7 @@ function App() {
           <Credibility t={t} />
 
           {/* 12. Closing: Objections & Action */}
-          <FAQ t={t} />
+          {/* <FAQ t={t} /> */}
           <Contact t={t} />
         </Suspense>
       </main>

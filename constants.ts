@@ -8,7 +8,6 @@ import {
   Users,
   Search,
   FileSignature,
-  Handshake,
   BarChart3,
   ShieldCheck,
   Zap,
@@ -16,346 +15,256 @@ import {
   Layers,
   Award,
   Wallet,
-  ArrowUpRight
+  ArrowUpRight,
+  Infinity
 } from 'lucide-react';
 
 export const WHATSAPP_NUMBER = "6281234567890"; // Example number
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const BLOG_POSTS = [
-    { title: "The Alpha in Ethics: Why Productive Waqf Outperforms Traditional Charity", category: "Strategy", readTime: "5 min", date: "Oct 12" },
-    { title: "Tokenizing the Ummah: Blockchain Applications in Islamic Finance", category: "Tech", readTime: "7 min", date: "Oct 10" },
-    { title: "Structural Liquidity: Solving the Nadzir's Dilemma", category: "Finance", readTime: "4 min", date: "Oct 08" },
-    { title: "Sukuk vs. Equity Waqf: A Comparative Risk Analysis", category: "Analysis", readTime: "6 min", date: "Oct 05" },
-    { title: "The Trillion Dollar Gap: Global Islamic Economy Report 2024", category: "Market", readTime: "5 min", date: "Oct 01" },
-    { title: "Digital Rails for Divine Duties", category: "Tech", readTime: "3 min", date: "Sep 28" },
-    { title: "Impact Telemetry: Measuring Social ROI", category: "Impact", readTime: "5 min", date: "Sep 25" },
-    { title: "Regulatory Sandboxes: BI's Stance on Waqf Fintech", category: "Legal", readTime: "8 min", date: "Sep 22" },
-    { title: "Asset Class Diversification in Islamic Portfolios", category: "Finance", readTime: "6 min", date: "Sep 18" },
-    { title: "The Modern Mutawalli: Governance Standards", category: "Governance", readTime: "4 min", date: "Sep 15" },
-    { title: "Venture Philanthropy: The New CSR", category: "Strategy", readTime: "5 min", date: "Sep 12" },
-    { title: "Smart Contracts for Mudarabah", category: "Tech", readTime: "6 min", date: "Sep 10" },
-    { title: "SME Credit Scoring via Supply Chain Data", category: "Data", readTime: "5 min", date: "Sep 08" },
-    { title: "Real Estate Waqf: Commercialization Strategies", category: "Real Estate", readTime: "7 min", date: "Sep 05" },
-    { title: "Cash Waqf Linked Sukuk (CWLS): A Deep Dive", category: "Finance", readTime: "9 min", date: "Sep 02" },
-    { title: "Intergenerational Wealth Transfer via Waqf", category: "Family Office", readTime: "5 min", date: "Aug 30" },
-    { title: "Risk Mitigation in Agricultural Waqf", category: "Risk", readTime: "6 min", date: "Aug 28" },
-    { title: "The Role of AI in Sharia Screening", category: "Tech", readTime: "4 min", date: "Aug 25" },
-    { title: "Healthcare Infrastructure as a Service", category: "Impact", readTime: "5 min", date: "Aug 22" },
-    { title: "Islamic Fintech Valuation Multiples 2024", category: "Market", readTime: "7 min", date: "Aug 20" }
+    { title: "Smart Money and Waqf", category: "Trends", readTime: "3 min", date: "Oct 12" },
+    { title: "How We Verify Businesses", category: "Trust", readTime: "5 min", date: "Oct 10" },
+    { title: "Sustainable Giving", category: "Impact", readTime: "4 min", date: "Oct 08" }
 ];
 
 export const CONTENT: Record<string, Translations> = {
   en: {
     meta: {
-      title: "Kareem Ventures | The Operating System for Islamic Capital",
-      description: "Indonesia's first integrated platform enabling SMEs to structure social giving through Islamic Waqf contracts. Invest in verified productive assets."
+      title: "Kareem Ventures | Simple Waqf Investing",
+      description: "Grow your wealth while helping others. Secure, transparent, and sharia-compliant."
     },
     nav: {
-      whyUs: "Problem",
-      impact: "Opportunities", 
-      howItWorks: "Process",
+      whyUs: "The Problem",
+      impact: "Projects", 
+      howItWorks: "How It Works",
       about: "Team", 
       faq: "FAQ",
-      blog: "Insights",
-      contact: "Partner"
+      blog: "Blog",
+      contact: "Start Now"
     },
     hero: {
-      label: "Institutional Waqf Infrastructure",
-      headline: "The Operating System for Islamic Capital",
-      subheadline: "We provide the compliance, legal, and technical rails to deploy capital into verified productive Waqf assets.",
-      ctaPrimary: "View Opportunities", 
-      ctaSecondary: "View Methodology",
-      stats: [
-        { label: "Sharia Compliant", value: "100%" },
-        { label: "Asset Classes", value: "2+" },
-        { label: "Verified Deal Flow", value: "Active" }
-      ]
+      label: "Waqf Platform",
+      headline: "Invest for Good",
+      subheadline: "We connect your money to real businesses. You get safety, they get capital, and the community gets the profit.",
+      ctaPrimary: "See Projects", 
+      ctaSecondary: "Learn More",
+      stats: [] 
     },
     marketGap: {
-      title: "The Trillion-Dollar Disconnect",
-      subtitle: "Billions in social capital sits undeployed while high-yield productive assets are starved of growth funding.",
-      supplyTitle: "Capital Seeking Deployment",
-      supplyDesc: "Corporate CSR, Islamic banks (DSKL), and Family offices need compliant, transparent channels.",
-      problemSupply: "No efficient discovery",
-      gapTitle: "The Void",
-      gapDesc: "Trust Gap",
-      demandTitle: "Assets Needing Capital",
-      demandDesc: "Productive Waqf SMEs and Social Enterprises with proven cash flow.",
-      problemDemand: "No institutional access"
+      title: "The Missing Link",
+      subtitle: "People want to help, and businesses need money. But trust is missing.",
+      supplyTitle: "Donors",
+      supplyDesc: "Unsure where money goes. Is it safe? Is it real?",
+      problemSupply: "No Trust",
+      gapTitle: "The Gap",
+      gapDesc: "No Connection",
+      demandTitle: "Businesses",
+      demandDesc: "Good businesses can't grow without fair capital.",
+      problemDemand: "No Money",
+      label: "The Problem"
     },
-    beneficiaries: { // Commercially rebranded in the UI as "Asset Classes"
-      subtitle: "We structure opportunities across two distinct asset classes offering different risk/social-return profiles.",
-      assetsLabel: "Productive Equity",
-      assetsDesc: "Profitable SMEs generating dividends to fund social sustainability.",
-      yieldLabel: "Social Infrastructure",
-      yieldDesc: "Direct investment into operational efficiency for schools and clinics."
+    beneficiaries: { 
+      subtitle: "Two ways your money makes a difference.",
+      assetsLabel: "Real Businesses",
+      assetsDesc: "Shops, farms, and services. They make money to fund charity.",
+      yieldLabel: "Social Needs",
+      yieldDesc: "Schools, clinics, and water. Direct help for people."
     },
     solution: {
-      title: "The Infrastructure",
-      subtitle: "A Trusted Marketplace",
-      description: "Kareem provides the trust, compliance, and transaction infrastructure to connect capital with verified impact.",
+      title: "The Solution",
+      subtitle: "",
+      description: "We make it easy to do good and track your impact.",
       cards: [
         {
-          title: "For Capital Partners",
-          description: "Access a curated pipeline of verified Waqf opportunities with standardized due diligence.",
-          icon: Briefcase
+          title: "Sustainable Giving",
+          description: "Your money keeps working. Invest once, help forever.",
+          icon: Infinity
         },
         {
-          title: "For Asset Owners",
-          description: "Get discovered by institutional capital and formalize operations with digital contracts.",
-          icon: Building2
-        },
-        {
-          title: "For Asset Managers",
-          description: "Digital rails to manage assets, track dividends, and demonstrate real-time audit trails.",
-          icon: Layout
+          title: "Safe & Legal",
+          description: "Official contracts protect your money and its purpose.",
+          icon: FileSignature
         }
       ]
     },
     process: {
-      title: "Deployment Engine",
-      valuePropTitle: "Risk Management",
-      valueProps: [
-        "Rigorous Due Diligence (KYC/KYB)",
-        "Standardized Sharia Contracts",
-        "Automated Impact Telemetry"
-      ],
+      title: "How It Works",
+      valuePropTitle: "",
+      valueProps: [],
       steps: [
-        { number: "01", title: "Verify", desc: "Entities undergo strict financial & Sharia due diligence (Risk Assessment)." },
-        { number: "02", title: "Structure", desc: "Automated legal & Sharia-compliant contract generation." },
-        { number: "03", title: "Deploy", desc: "Secure capital routing via escrow to verified projects." },
-        { number: "04", title: "Monitor", desc: "Live dashboard for financial dividends & social ROI." }
+        { number: "01", title: "We Check", desc: "We verify the business is real and safe." },
+        { number: "02", title: "You Fund", desc: "Choose a project and send money securely." },
+        { number: "03", title: "We Lock", desc: "We sign legal papers to protect the asset." },
+        { number: "04", title: "You Track", desc: "See the impact and growth online." }
       ]
     },
     vision: {
-      title: "The Horizon",
-      subtitle: "Building the Rails for a New Era",
-      points: [],
-      impactTitle: "",
-      impactDesc: ""
+      title: "Our Vision",
+      subtitle: "Building a better future for Islamic finance.",
+      points: [
+          "Digital Trust",
+          "Long-term Wealth",
+          "Global Reach"
+      ],
+      impactTitle: "Real Impact",
+      impactDesc: "Connecting money to meaning."
     },
     credibility: {
-      title: "The Architects",
-      subtitle: "A team forged in hyper-growth tech companies and deep Islamic finance.",
+      title: "Our Team",
+      subtitle: "Experts in tech and Sharia.",
       team: [
-        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
-        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
-        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
-        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
+        { name: "Pandu Hartanto", role: "CEO", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
+        { name: "Ari Bhaktisubagja", role: "CPO", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
+        { name: "Fachry Bafadal", role: "COO", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
+        { name: "Syarif Hidayat", role: "CTO", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
       ]
     },
     leadGen: {
-      title: "Request Data Room",
-      subtitle: "Accredited investors and institutional partners may request access to our current deal flow.",
+      title: "Get Started",
+      subtitle: "Ready to help? Let's talk.",
       form: {
-        name: "Full Name",
-        org: "Institution / Family Office",
-        email: "Work Email",
-        interest: "Investment Class",
-        submit: "Request Access"
+        name: "Name",
+        org: "Organization",
+        email: "Email",
+        interest: "Your Goal",
+        submit: "Send Message"
       },
-      disclaimer: "For accredited investors and institutional partners only."
+      disclaimer: ""
     },
     faq: {
-        subtitle: "Understanding our structure, compliance, and risk management.",
-        items: [
-            {
-                question: "How do you ensure Sharia compliance?",
-                answer: "We work with a dedicated Sharia Advisory Board and utilize standardized contracts approved by relevant Islamic finance bodies (BWI/MUI standards). All assets are screened for halal compliance before listing."
-            },
-            {
-                question: "Is my capital guaranteed?",
-                answer: "As with all Sharia-compliant investments (Musyarakah/Mudharabah), returns are based on performance and capital is at risk. However, we mitigate this through rigorous due diligence, collateral backing where possible, and by focusing on cash-flow-positive productive assets."
-            },
-            {
-                question: "What is the Exit Strategy?",
-                answer: "For equity-based productive waqf, liquidity is typically achieved through secondary market sales (where applicable) or buy-back clauses structured into the contract by the underlying asset owner."
-            },
-            {
-                question: "What is the fee structure?",
-                answer: "Kareem Ventures charges a success fee upon capital deployment (typically 3-5%) and a platform management fee on the yields generated (profit-sharing). There are no upfront fees for investors to access the deal flow."
-            },
-            {
-                question: "What is the minimum ticket size?",
-                answer: "We primarily work with institutional partners (CSR, Family Offices). Minimum deployment sizes vary by asset class, typically starting at IDR 25M for pooled deals, though specific tranches may differ."
-            },
-            {
-                question: "Who holds the funds (Custody)?",
-                answer: "Funds are routed through verified escrow accounts held with our partner Islamic Banks (e.g., BSI) and are released to the asset owner only upon contract finalization and milestone verification."
-            },
-            {
-                question: "How is impact measured?",
-                answer: "We track both financial performance (dividends generated) and social output (students funded, patients served) via our real-time Nadzir dashboard, providing you with quarterly impact reports."
-            }
-        ]
+        subtitle: "Simple answers.",
+        items: []
     },
     blog: {
-        title: "Market Intelligence",
-        subtitle: "Analysis and perspectives on the intersection of faith, finance, and technology.",
-        viewAll: "View Journal",
+        title: "Latest News",
+        subtitle: "Read about faith and finance.",
+        viewAll: "See All",
         items: BLOG_POSTS
     },
     footer: {
-      contactTitle: "Inquiries",
+      contactTitle: "Contact",
       quickLinksTitle: "Company",
-      copyright: "© 2024 Kareem Ventures. All Rights Reserved."
+      copyright: "© 2024 Kareem Ventures."
     }
   },
   id: {
     meta: {
-      title: "Kareem Ventures | Sistem Operasi untuk Modal Islam",
-      description: "Platform terintegrasi pertama di Indonesia yang memungkinkan UKM menyusun wakaf produktif. Investasi dalam aset produktif terverifikasi."
+      title: "Kareem Ventures | Investasi Wakaf Mudah",
+      description: "Kembangkan harta sambil membantu sesama. Aman, transparan, dan syariah."
     },
     nav: {
       whyUs: "Masalah",
-      impact: "Peluang",
-      howItWorks: "Proses",
+      impact: "Proyek",
+      howItWorks: "Cara Kerja",
       about: "Tim",
       faq: "FAQ",
-      blog: "Wawasan",
-      contact: "Mitra"
+      blog: "Blog",
+      contact: "Mulai"
     },
     hero: {
-      label: "Infrastruktur Wakaf Institusional",
-      headline: "Sistem Operasi untuk Modal Islam",
-      subheadline: "Kami menyediakan infrastruktur kepatuhan, hukum, dan teknis untuk menyalurkan modal ke aset Wakaf produktif terverifikasi.",
-      ctaPrimary: "Lihat Peluang",
-      ctaSecondary: "Lihat Metodologi",
-      stats: [
-        { label: "Kepatuhan Syariah", value: "100%" },
-        { label: "Kelas Aset", value: "2+" },
-        { label: "Aset Terverifikasi", value: "Aktif" }
-      ]
+      label: "Platform Wakaf",
+      headline: "Investasi Kebaikan",
+      subheadline: "Kami hubungkan uang Anda ke bisnis nyata. Anda aman, mereka dapat modal, umat dapat untung.",
+      ctaPrimary: "Lihat Proyek",
+      ctaSecondary: "Pelajari",
+      stats: []
     },
     marketGap: {
-      title: "Kesenjangan Triliunan Rupiah",
-      subtitle: "Miliaran modal sosial menganggur sementara aset produktif kekurangan dana pertumbuhan.",
-      supplyTitle: "Modal Siap Salur",
-      supplyDesc: "Dana CSR, Bank Syariah, dan Family Office butuh saluran patuh syariah yang transparan.",
-      problemSupply: "Tidak ada penemuan efisien",
-      gapTitle: "Kekosongan",
-      gapDesc: "Celah Kepercayaan",
-      demandTitle: "Aset Butuh Modal",
-      demandDesc: "UKM Wakaf Produktif dan Wirausaha Sosial dengan arus kas terbukti.",
-      problemDemand: "Tidak ada akses institusi"
+      title: "Mata Rantai Putus",
+      subtitle: "Orang ingin membantu, bisnis butuh modal. Tapi rasa percaya hilang.",
+      supplyTitle: "Donatur",
+      supplyDesc: "Ragu uang kemana. Apakah aman? Apakah nyata?",
+      problemSupply: "Tidak Percaya",
+      gapTitle: "Celah",
+      gapDesc: "Tidak Terhubung",
+      demandTitle: "Bisnis",
+      demandDesc: "Bisnis bagus sulit tumbuh tanpa modal adil.",
+      problemDemand: "Kurang Modal",
+      label: "Masalah"
     },
     beneficiaries: {
-      subtitle: "Kami menyusun peluang di dua kelas aset berbeda dengan profil risiko/imbal sosial yang berbeda.",
-      assetsLabel: "Ekuitas Produktif",
-      assetsDesc: "UKM menguntungkan yang menghasilkan dividen untuk keberlanjutan sosial.",
-      yieldLabel: "Infrastruktur Sosial",
-      yieldDesc: "Investasi langsung pada efisiensi operasional sekolah dan klinik."
+      subtitle: "Dua cara uang Anda memberi dampak.",
+      assetsLabel: "Bisnis Nyata",
+      assetsDesc: "Toko, kebun, dan jasa. Hasilkan untung untuk amal.",
+      yieldLabel: "Sosial",
+      yieldDesc: "Sekolah, klinik, dan air. Bantuan langsung untuk umat."
     },
     solution: {
-      title: "Infrastruktur",
-      subtitle: "Marketplace Terpercaya",
-      description: "Kareem menyediakan infrastruktur kepercayaan, kepatuhan, dan transaksi.",
+      title: "Solusi Kami",
+      subtitle: "",
+      description: "Kami mudahkan Anda beramal dan pantau hasilnya.",
       cards: [
         {
-          title: "Untuk Mitra Modal",
-          description: "Akses pipeline peluang Wakaf terverifikasi dengan due diligence standar.",
-          icon: Briefcase
+          title: "Amal Berkelanjutan",
+          description: "Uang Anda terus bekerja. Investasi sekali, bantu selamanya.",
+          icon: Infinity
         },
         {
-          title: "Untuk Pemilik Aset",
-          description: "Ditemukan oleh modal institusional dan formalkan operasi dengan kontrak digital.",
-          icon: Building2
-        },
-        {
-          title: "Untuk Manajer Aset",
-          description: "Rel digital untuk mengelola aset, melacak dividen, dan menunjukkan jejak audit real-time.",
-          icon: Layout
+          title: "Aman & Legal",
+          description: "Kontrak resmi lindungi uang dan tujuannya.",
+          icon: FileSignature
         }
       ]
     },
     process: {
-      title: "Mesin Penyaluran",
-      valuePropTitle: "Manajemen Risiko",
-      valueProps: [
-        "Due Diligence Ketat (KYC/KYB)",
-        "Kontrak Syariah Standar",
-        "Telemetri Dampak Otomatis"
-      ],
+      title: "Cara Kerja",
+      valuePropTitle: "",
+      valueProps: [],
       steps: [
-        { number: "01", title: "Verifikasi", desc: "Entitas menjalani due diligence keuangan & Syariah ketat (Risk Assessment)." },
-        { number: "02", title: "Struktur", desc: "Pembuatan kontrak hukum & patuh Syariah otomatis." },
-        { number: "03", title: "Salurkan", desc: "Penyaluran modal aman ke akun escrow terverifikasi." },
-        { number: "04", title: "Monitor", desc: "Dashboard langsung untuk kinerja keuangan & ROI sosial." }
+        { number: "01", title: "Kami Cek", desc: "Kami pastikan bisnis nyata dan aman." },
+        { number: "02", title: "Anda Danai", desc: "Pilih proyek dan kirim dana aman." },
+        { number: "03", title: "Kami Kunci", desc: "Kami buat surat resmi jaga aset." },
+        { number: "04", title: "Anda Pantau", desc: "Lihat dampak dan hasil online." }
       ]
     },
     vision: {
-      title: "",
-      subtitle: "",
-      points: [],
-      impactTitle: "",
-      impactDesc: ""
+      title: "Visi Kami",
+      subtitle: "Membangun masa depan keuangan Islam.",
+      points: [
+        "Kepercayaan Digital",
+        "Kekayaan Abadi",
+        "Jangkauan Global"
+      ],
+      impactTitle: "Dampak Nyata",
+      impactDesc: "Hubungkan uang dengan tujuan."
     },
     credibility: {
-      title: "Para Arsitek",
-      subtitle: "Tim dari perusahaan teknologi pertumbuhan tinggi dan keuangan Islam.",
+      title: "Tim Kami",
+      subtitle: "Ahli teknologi dan Syariah.",
       team: [
-        { name: "Pandu Hartanto", role: "Chief Executive Officer", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
-        { name: "Ari Bhaktisubagja", role: "Chief Product Officer", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
-        { name: "Fachry Bafadal", role: "Chief Operating Officer", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
-        { name: "Syarif Hidayat", role: "Chief Technology Officer", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
+        { name: "Pandu Hartanto", role: "CEO", ex: "Ex-Midtrans, Gojek", image: "", linkedin: "https://www.linkedin.com/in/panduhartanto/" },
+        { name: "Ari Bhaktisubagja", role: "CPO", ex: "Ex-Kartuku, Gojek", image: "", linkedin: "https://www.linkedin.com/in/aribhaktisubagja/" },
+        { name: "Fachry Bafadal", role: "COO", ex: "Ex-Onebit", image: "", linkedin: "https://www.linkedin.com/in/fachrybafadal/" },
+        { name: "Syarif Hidayat", role: "CTO", ex: "Ex-PythonID", image: "", linkedin: "https://www.linkedin.com/in/aijogja/" }
       ]
     },
     leadGen: {
-      title: "Minta Data Room",
-      subtitle: "Investor terakreditasi dan mitra institusi dapat meminta akses ke deal flow kami.",
+      title: "Mulai Sekarang",
+      subtitle: "Siap membantu? Mari bicara.",
       form: {
-        name: "Nama Lengkap",
-        org: "Institusi / Family Office",
-        email: "Email Kantor",
-        interest: "Kelas Investasi",
-        submit: "Minta Akses"
+        name: "Nama",
+        org: "Organisasi",
+        email: "Email",
+        interest: "Tujuan Anda",
+        submit: "Kirim Pesan"
       },
-      disclaimer: "Hanya untuk investor terakreditasi dan mitra institusi."
+      disclaimer: ""
     },
     faq: {
-        subtitle: "Memahami struktur, kepatuhan, dan manajemen risiko kami.",
-        items: [
-            {
-                question: "Bagaimana Anda memastikan kepatuhan Syariah?",
-                answer: "Kami bekerja dengan Dewan Pengawas Syariah dan menggunakan kontrak standar yang disetujui oleh badan keuangan Islam terkait (BWI/MUI). Semua aset disaring untuk kepatuhan halal."
-            },
-            {
-                question: "Apakah modal saya dijamin?",
-                answer: "Seperti semua investasi Syariah (Musyarakah/Mudharabah), hasil didasarkan pada kinerja dan modal memiliki risiko. Namun, kami memitigasi ini melalui due diligence ketat, jaminan aset jika memungkinkan, dan fokus pada aset produktif dengan arus kas positif."
-            },
-            {
-                question: "Bagaimana Strategi Exit-nya?",
-                answer: "Untuk wakaf produktif berbasis ekuitas, likuiditas biasanya dicapai melalui penjualan pasar sekunder (jika berlaku) atau klausul buy-back yang disusun dalam kontrak oleh pemilik aset dasar."
-            },
-            {
-                question: "Bagaimana struktur biayanya?",
-                answer: "Kareem Ventures mengenakan biaya keberhasilan saat penyaluran modal (biasanya 3-5%) dan biaya manajemen platform atas hasil yang dihasilkan (bagi hasil). Tidak ada biaya di muka untuk investor."
-            },
-            {
-                question: "Berapa ukuran tiket minimum?",
-                answer: "Kami terutama bekerja dengan mitra institusi (CSR, Family Office). Ukuran penyaluran minimum bervariasi, biasanya mulai dari Rp 25 Juta untuk kesepakatan gabungan."
-            },
-            {
-                question: "Siapa yang memegang dana (Kustodian)?",
-                answer: "Dana disalurkan melalui rekening escrow terverifikasi di Bank Syariah mitra kami (mis. BSI) dan hanya dilepaskan ke pemilik aset setelah finalisasi kontrak dan verifikasi milestone."
-            },
-            {
-                question: "Bagaimana dampak diukur?",
-                answer: "Kami melacak kinerja keuangan (dividen yang dihasilkan) dan output sosial (siswa didanai, pasien dilayani) melalui dashboard Nadzir real-time kami."
-            }
-        ]
+        subtitle: "Jawaban singkat.",
+        items: []
     },
     blog: {
-        title: "Intelijen Pasar",
-        subtitle: "Analisis dan perspektif tentang persimpangan iman, keuangan, dan teknologi.",
-        viewAll: "Lihat Jurnal",
+        title: "Berita Terbaru",
+        subtitle: "Baca tentang iman dan keuangan.",
+        viewAll: "Lihat Semua",
         items: BLOG_POSTS
     },
     footer: {
-      contactTitle: "Inquiries",
+      contactTitle: "Kontak",
       quickLinksTitle: "Perusahaan",
-      copyright: "© 2024 Kareem Ventures. Hak Cipta Dilindungi."
+      copyright: "© 2024 Kareem Ventures."
     }
   }
 };

@@ -87,27 +87,27 @@ const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 font-bold">K</div>
                             <div>
-                                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Nadzir Portal</div>
-                                <div className="text-sm font-bold text-slate-900 dark:text-white">Yayasan Wakaf Indonesia</div>
+                                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Dashboard</div>
+                                <div className="text-sm font-bold text-slate-900 dark:text-white">Admin Portal</div>
                             </div>
                         </div>
                         <div className="flex gap-2 items-center bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full border border-emerald-100 dark:border-emerald-800">
                              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                             <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Live Sync</span>
+                             <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Live</span>
                         </div>
                     </div>
 
                     {/* Stats Grid */}
                     <div className="grid grid-cols-2 gap-4 mb-8">
                         <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
-                             <div className="text-slate-400 text-[10px] font-bold uppercase mb-2">Total AUM</div>
+                             <div className="text-slate-400 text-[10px] font-bold uppercase mb-2">Total Invested</div>
                              <div className="text-2xl font-bold text-slate-900 dark:text-white">14.2 B</div>
                              <div className="flex items-center gap-1 text-[10px] text-emerald-500 font-bold mt-2">
                                 <ArrowUpRight className="w-3 h-3" /> +12.5%
                              </div>
                         </div>
                         <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/30">
-                             <div className="text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase mb-2">Social Dividend</div>
+                             <div className="text-emerald-700 dark:text-emerald-400 text-[10px] font-bold uppercase mb-2">Donated</div>
                              <div className="text-2xl font-bold text-emerald-800 dark:text-emerald-300">850 M</div>
                              <div className="flex items-center gap-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-bold mt-2">
                                 <Activity className="w-3 h-3" /> Distributed
@@ -151,7 +151,7 @@ const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
                                 <Wallet className="w-4 h-4" />
                             </div>
                             <div>
-                                <div className="text-[10px] opacity-70 uppercase tracking-wide">Payout Ready</div>
+                                <div className="text-[10px] opacity-70 uppercase tracking-wide">Ready</div>
                                 <div className="text-sm font-bold">School Expansion #4</div>
                             </div>
                         </div>

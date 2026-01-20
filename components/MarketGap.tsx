@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AlertTriangle, Fingerprint, ArrowRight, Wallet, Ban, FileText, Search, Lock, RefreshCw } from 'lucide-react';
+import { AlertTriangle, Fingerprint, ArrowRight, Wallet, Ban, FileText, Search, Lock, RefreshCw, BarChart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface MarketGapProps {
@@ -21,18 +21,18 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
     visible: { 
       opacity: 1, 
       transition: { 
-        staggerChildren: 0.15,
+        staggerChildren: 0.25,
         delayChildren: 0.1
       } 
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 50 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+      transition: { duration: 0.7, ease: "easeOut" } 
     }
   };
 
@@ -50,21 +50,21 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 font-bold text-[10px] uppercase tracking-widest mb-4">
-             <AlertTriangle className="w-3 h-3" />
-             Market Failure
+             <BarChart className="w-3 h-3" />
+             {t.marketGap.label || "The Problem"}
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
-            The Capital-to-Impact <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-white">Disconnect</span>
+             {t.marketGap.title}
           </h2>
           <p className="text-lg text-slate-400 leading-relaxed font-light">
-            Massive liquidity meets a lack of digital rails, creating a verification void that stalls social progress.
+             {t.marketGap.subtitle}
           </p>
         </motion.div>
 
@@ -107,15 +107,15 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                     </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Deployment Inefficiency</h3>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">{t.marketGap.supplyTitle}</h3>
                 <p className="text-slate-400 mb-6 text-sm font-light leading-relaxed">
-                   Billions in CSR and family office capital sit undeployed due to a lack of verified pipelines.
+                   {t.marketGap.supplyDesc}
                 </p>
 
                 <div className="flex items-center gap-4 pt-4 border-t border-white/5">
                     <div>
                         <div className="text-2xl font-bold text-rose-400 font-mono">${count}B+</div>
-                        <div className="text-[9px] uppercase text-slate-500 font-bold tracking-wider">Undeployed Capital</div>
+                        <div className="text-[9px] uppercase text-slate-500 font-bold tracking-wider">Idle Money</div>
                     </div>
                 </div>
             </motion.div>
@@ -140,7 +140,7 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                             </div>
                          </div>
                          <div className="mt-auto flex justify-center">
-                            <span className="text-[8px] font-mono text-rose-400 bg-rose-500/10 px-1 rounded border border-rose-500/20">UNVERIFIED</span>
+                            <span className="text-[8px] font-mono text-rose-400 bg-rose-500/10 px-1 rounded border border-rose-500/20">NO AUDIT</span>
                          </div>
                          
                          <motion.div 
@@ -151,9 +151,9 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                     </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">The Verification Void</h3>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Trust Gap</h3>
                 <p className="text-slate-400 mb-6 text-sm font-light leading-relaxed">
-                   Without standardized KYC/KYB, institutional donors cannot audit impact or trace funds efficiently.
+                   {t.marketGap.gapDesc || "Donors don't know if money is safe."}
                 </p>
 
                  <div className="flex items-center gap-4 pt-4 border-t border-white/5">
@@ -199,9 +199,9 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                     </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">Analog Infrastructure</h3>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tight">{t.marketGap.demandTitle}</h3>
                 <p className="text-slate-400 mb-6 text-sm font-light leading-relaxed">
-                   Manual, paper-based contracts prevent scalability and real-time reporting, locking liquidity in friction.
+                   {t.marketGap.demandDesc}
                 </p>
 
                  <div className="flex items-center gap-4 pt-4 border-t border-white/5">
@@ -210,7 +210,7 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                              <RefreshCw className="w-4 h-4 text-rose-500" />
                         </div>
                         <div className="text-[9px] uppercase text-slate-500 font-bold tracking-wider leading-tight">
-                            Zero<br/>Telemetry
+                            No<br/>Updates
                         </div>
                     </div>
                 </div>
@@ -218,15 +218,15 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.8 }}
           className="mt-16 text-center relative"
         >
             <a href="#how-it-works" className="inline-flex items-center gap-4 text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:text-emerald-400 transition-colors group">
                 <span className="opacity-50 group-hover:opacity-100 transition-opacity">The Solution</span>
                 <ArrowRight className="w-4 h-4 text-emerald-400 animate-bounce-x" />
-                <span className="text-emerald-400">Trust Infrastructure</span>
+                <span className="text-emerald-400">Trust Platform</span>
             </a>
         </motion.div>
 

@@ -52,7 +52,7 @@ const TrustBar: React.FC<TrustBarProps> = ({ t }) => {
                     </div>
                     <div>
                         <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Security</div>
-                        <div className="text-sm font-bold text-slate-900 dark:text-white leading-tight">Escrow Account</div>
+                        <div className="text-sm font-bold text-slate-900 dark:text-white leading-tight">Secure Transaction</div>
                     </div>
                 </div>
 

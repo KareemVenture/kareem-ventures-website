@@ -69,6 +69,7 @@ export interface Translations {
     demandDesc: string;
     problemSupply: string;
     problemDemand: string;
+    label: string;
   };
   beneficiaries: {
     subtitle: string;
