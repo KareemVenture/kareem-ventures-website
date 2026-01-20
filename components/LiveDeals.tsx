@@ -80,8 +80,16 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
   };
 
   return (
-    <section id="opportunities" className="py-24 bg-slate-50 dark:bg-[#0a0f1e] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="opportunities" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-[#0f1218]">
+      
+      {/* Dynamic Blob Background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-300/20 dark:bg-purple-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-yellow-300/20 dark:bg-amber-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-300/20 dark:bg-pink-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +100,7 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
         >
           <div>
             <span className="text-slate-500 font-bold text-[10px] uppercase tracking-widest mb-2 block">Live Projects</span>
-            <h3 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">Active <span className="text-emerald-600">Opportunities</span></h3>
+            <h3 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.1]">Active <span className="text-emerald-600">Opportunities</span></h3>
           </div>
           
           <div className="flex gap-2">
@@ -117,10 +125,10 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
                 <motion.div 
                     key={idx} 
                     variants={itemVariants}
-                    className="min-w-[320px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 transition-all duration-300 group snap-center cursor-pointer relative overflow-hidden"
+                    className="min-w-[320px] bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:shadow-emerald-900/10 transition-all duration-300 group snap-center cursor-pointer relative overflow-hidden"
                 >
                     {/* Status Badge */}
-                    <div className="absolute top-6 right-6 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <div className="absolute top-6 right-6 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
                         {opp.status}
                     </div>
 
@@ -128,11 +136,11 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
                         <Building className="w-6 h-6 text-slate-400 group-hover:text-emerald-600 dark:text-slate-500 dark:group-hover:text-emerald-400" />
                     </div>
 
-                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wide mb-1">
+                    <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-1">
                          {opp.category}
                     </div>
-                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{opp.title}</h4>
-                    <div className="flex items-center gap-1 text-xs text-slate-500 mb-6">
+                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors tracking-tight">{opp.title}</h4>
+                    <div className="flex items-center gap-1 text-xs text-slate-500 mb-6 font-medium">
                         <MapPin className="w-3 h-3" /> {opp.location}
                     </div>
 

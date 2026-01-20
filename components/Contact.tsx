@@ -18,9 +18,9 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
       
-      {/* Background Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+      {/* Intense Background Glows */}
+      <div className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -28,8 +28,8 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
             
             {/* Left Side: Content */}
             <div className="max-w-xl">
-                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest mb-3 block">Partnership</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">Partnership</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-[1.1]">
                    {t.leadGen.title}
                 </h2>
                 <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-light">
@@ -37,8 +37,8 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                 </p>
 
                 <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/30 transition-colors">
-                        <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                    <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/30 transition-colors group">
+                        <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 group-hover:scale-110 transition-transform">
                             <MessageSquare className="w-5 h-5" />
                         </div>
                         <div>
@@ -46,8 +46,8 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Schedule a call with our Nadzir advisory team.</p>
                         </div>
                     </div>
-                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500/30 transition-colors">
-                        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                     <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-500/30 transition-colors group">
+                        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 group-hover:scale-110 transition-transform">
                             <ShieldCheck className="w-5 h-5" />
                         </div>
                         <div>
@@ -59,7 +59,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
             </div>
 
             {/* Right Side: Form */}
-            <div className="bg-slate-50 dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-emerald-900/5 relative overflow-hidden">
+            <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-[2rem] p-8 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-emerald-900/5 relative overflow-hidden">
                 <AnimatePresence mode="wait">
                     {!submitted ? (
                     <motion.form 
@@ -72,23 +72,23 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                     >
                         <div className="grid md:grid-cols-2 gap-5">
                             <div className="space-y-2">
-                                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{t.leadGen.form.name}</label>
-                                <input required type="text" className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="Full Name" />
+                                <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{t.leadGen.form.name}</label>
+                                <input required type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="Full Name" />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{t.leadGen.form.org}</label>
-                                <input type="text" className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="Organization" />
+                                <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{t.leadGen.form.org}</label>
+                                <input type="text" className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="Organization" />
                             </div>
                         </div>
                         
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{t.leadGen.form.email}</label>
-                            <input required type="email" className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="name@company.com" />
+                            <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{t.leadGen.form.email}</label>
+                            <input required type="email" className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm shadow-sm" placeholder="name@company.com" />
                         </div>
                         
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{t.leadGen.form.interest}</label>
-                            <textarea className="w-full px-4 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm min-h-[120px] shadow-sm" placeholder="Tell us about your waqf goals..."></textarea>
+                            <label className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{t.leadGen.form.interest}</label>
+                            <textarea className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all dark:text-white text-sm min-h-[120px] shadow-sm" placeholder="Tell us about your waqf goals..."></textarea>
                         </div>
 
                         <button 

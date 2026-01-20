@@ -8,15 +8,19 @@ interface BeneficiariesProps {
 
 const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
   return (
-    <section id="impact" className="py-24 relative overflow-hidden bg-[#f3f4f6] dark:bg-[#0c0c0c]">
+    <section id="impact" className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
       
-       {/* Organic Background Pattern */}
+       {/* Distinct Section Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 via-white to-emerald-50/50 dark:from-[#051c14] dark:via-[#020617] dark:to-[#020617]"></div>
+      
+      {/* Pattern Overlay */}
       <div className="absolute inset-0 opacity-[0.4] dark:opacity-[0.05]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239ca3af' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2310b981' fill-opacity='0.2' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E")`
       }}></div>
       
-      {/* Soft Glow */}
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-200/20 dark:bg-emerald-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+      {/* Dynamic Spotlights */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-400/10 dark:bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-400/10 dark:bg-teal-500/10 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -33,7 +37,7 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
                     Where Capital <span className="text-emerald-600 dark:text-emerald-400">Generates Value</span>
                 </h2>
             </div>
-            <p className="max-w-md text-slate-600 dark:text-slate-400 text-base md:text-lg font-light leading-relaxed">
+            <p className="max-w-md text-slate-600 dark:text-slate-400 text-lg font-light leading-relaxed">
                 {t.beneficiaries.subtitle}
             </p>
         </motion.div>
@@ -48,10 +52,10 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
               transition={{ duration: 0.5 }}
-              className="md:col-span-2 bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 relative overflow-hidden group hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-500 border border-slate-200 dark:border-slate-800"
+              className="md:col-span-2 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md rounded-[2.5rem] p-8 relative overflow-hidden group hover:shadow-2xl hover:shadow-emerald-900/10 transition-all duration-500 border border-emerald-100 dark:border-emerald-900/30"
             >
                 {/* Background Decor */}
-                <div className="absolute -right-20 -top-20 w-64 h-64 bg-emerald-50 dark:bg-emerald-900/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-emerald-100 dark:bg-emerald-900/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
 
                 <div className="relative z-10">
                     <div className="flex items-center gap-5 mb-8">
@@ -59,7 +63,7 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
                             <Sprout className="w-7 h-7" />
                         </div>
                         <div>
-                             <h3 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{t.beneficiaries.assetsLabel}</h3>
+                             <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{t.beneficiaries.assetsLabel}</h3>
                              <div className="flex items-center gap-1 text-[10px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider bg-emerald-100 dark:bg-emerald-900/30 w-fit px-2.5 py-1 rounded-full mt-1.5">
                                 <TrendingUp className="w-3 h-3" /> Growth Assets
                              </div>
@@ -67,7 +71,7 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-4 max-w-lg relative">
-                        <div className="bg-slate-50 dark:bg-white/5 p-5 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300 cursor-default group/item">
+                        <div className="bg-white dark:bg-white/5 p-5 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300 cursor-default group/item">
                             <div className="flex justify-between items-start mb-3">
                                 <Utensils className="w-6 h-6 text-slate-400 group-hover/item:text-emerald-500 transition-colors" />
                                 <ArrowUpRight className="w-4 h-4 text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity" />
@@ -75,7 +79,7 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
                             <h4 className="font-bold text-slate-900 dark:text-white mb-1">F&B & Services</h4>
                             <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Cafes, Catering, Laundry</p>
                         </div>
-                        <div className="bg-slate-50 dark:bg-white/5 p-5 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300 cursor-default group/item">
+                        <div className="bg-white dark:bg-white/5 p-5 rounded-2xl border border-slate-100 dark:border-white/5 hover:border-emerald-500/30 hover:shadow-lg transition-all duration-300 cursor-default group/item">
                             <div className="flex justify-between items-start mb-3">
                                 <Store className="w-6 h-6 text-slate-400 group-hover/item:text-emerald-500 transition-colors" />
                                 <ArrowUpRight className="w-4 h-4 text-emerald-500 opacity-0 group-hover/item:opacity-100 transition-opacity" />
@@ -114,7 +118,7 @@ const Beneficiaries: React.FC<BeneficiariesProps> = ({ t }) => {
                         </motion.div>
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-2 tracking-tight">{t.beneficiaries.yieldLabel}</h3>
+                    <h3 className="text-xl font-bold mb-2 tracking-tight">{t.beneficiaries.yieldLabel}</h3>
                     <div className="flex items-center gap-2 text-[10px] font-bold text-rose-400 uppercase tracking-wider mb-6 bg-rose-900/30 w-fit px-2.5 py-1 rounded-full border border-rose-500/30">
                         <Activity className="w-3 h-3 animate-pulse" /> Social ROI
                     </div>

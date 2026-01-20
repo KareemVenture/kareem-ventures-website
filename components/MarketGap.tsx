@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { AlertTriangle, Fingerprint, ArrowRight, Wallet, Ban, FileText, Search, Lock, RefreshCw, BarChart } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { Fingerprint, ArrowRight, Wallet, Ban, FileText, Search, Lock, RefreshCw, BarChart } from 'lucide-react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
 
 interface MarketGapProps {
   t: any;
@@ -8,6 +8,18 @@ interface MarketGapProps {
 
 const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
   const [count, setCount] = useState(0);
+  let mouseX = useMotionValue(0);
+  let mouseY = useMotionValue(0);
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent) {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,7 +72,7 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
              <BarChart className="w-3 h-3" />
              {t.marketGap.label || "The Problem"}
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
              {t.marketGap.title}
           </h2>
           <p className="text-lg text-slate-400 leading-relaxed font-light">
@@ -73,14 +85,11 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid lg:grid-cols-3 gap-6"
+          className="grid lg:grid-cols-3 gap-6 group"
+          onMouseMove={handleMouseMove}
         >
-            {/* Card 1 */}
-            <motion.div 
-                variants={itemVariants} 
-                whileHover={{ y: -5, boxShadow: "0 0 20px rgba(244,63,94,0.15)" }}
-                className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-all duration-300 group relative overflow-hidden"
-            >
+            {/* Spotlight Card 1 */}
+            <SpotlightCard mouseX={mouseX} mouseY={mouseY} variants={itemVariants}>
                 <div className="h-32 w-full mb-6 rounded-2xl bg-slate-900 border border-white/10 relative overflow-hidden flex items-center justify-center">
                     <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:12px_12px] opacity-50"></div>
                     <div className="relative z-10 flex items-center gap-4">
@@ -118,14 +127,10 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                         <div className="text-[9px] uppercase text-slate-500 font-bold tracking-wider">Idle Money</div>
                     </div>
                 </div>
-            </motion.div>
+            </SpotlightCard>
 
-            {/* Card 2 */}
-            <motion.div 
-                variants={itemVariants} 
-                whileHover={{ y: -5, boxShadow: "0 0 20px rgba(244,63,94,0.15)" }}
-                className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-all duration-300 group relative overflow-hidden"
-            >
+            {/* Spotlight Card 2 */}
+            <SpotlightCard mouseX={mouseX} mouseY={mouseY} variants={itemVariants}>
                 <div className="h-32 w-full mb-6 rounded-2xl bg-slate-900 border border-white/10 relative overflow-hidden flex items-center justify-center">
                     <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:12px_12px] opacity-50"></div>
                     
@@ -166,14 +171,10 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </SpotlightCard>
 
-             {/* Card 3 */}
-             <motion.div 
-                variants={itemVariants} 
-                whileHover={{ y: -5, boxShadow: "0 0 20px rgba(244,63,94,0.15)" }}
-                className="bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition-all duration-300 group relative overflow-hidden"
-            >
+             {/* Spotlight Card 3 */}
+             <SpotlightCard mouseX={mouseX} mouseY={mouseY} variants={itemVariants}>
                 <div className="h-32 w-full mb-6 rounded-2xl bg-slate-900 border border-white/10 relative overflow-hidden flex items-center justify-center">
                     <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:12px_12px] opacity-50"></div>
                     <div className="relative z-10 scale-90">
@@ -214,7 +215,7 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </SpotlightCard>
         </motion.div>
 
         <motion.div 
@@ -234,5 +235,29 @@ const MarketGap: React.FC<MarketGapProps> = ({ t }) => {
     </section>
   );
 };
+
+// Internal Spotlight Card Component
+function SpotlightCard({ children, mouseX, mouseY, variants, className = "" }: any) {
+  return (
+    <motion.div
+      variants={variants}
+      className={`group relative border border-white/10 bg-white/5 overflow-hidden rounded-[2rem] p-8 hover:bg-white/10 transition-colors duration-500 ${className}`}
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(255, 255, 255, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <div className="relative">{children}</div>
+    </motion.div>
+  );
+}
 
 export default MarketGap;

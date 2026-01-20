@@ -48,8 +48,8 @@ const Process: React.FC<ProcessProps> = ({ t }) => {
             transition={{ duration: 0.6 }}
             className="text-center mb-20 max-w-3xl mx-auto"
         >
-            <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs uppercase tracking-widest mb-3 block">Simple Process</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight font-serif">
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-widest mb-3 block">Simple Process</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight leading-[1.1]">
                 {t.process.title}
             </h2>
         </motion.div>
@@ -58,8 +58,10 @@ const Process: React.FC<ProcessProps> = ({ t }) => {
         <div className="relative">
             
             {/* Connecting Pipeline Line (Desktop) */}
-            <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800">
+            <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 dark:bg-slate-800 overflow-hidden">
                 <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent animate-shimmer"></div>
+                {/* Glowing Beam */}
+                <div className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-emerald-500 to-transparent blur-sm animate-beam"></div>
             </div>
 
             <motion.div 
@@ -94,7 +96,7 @@ const Process: React.FC<ProcessProps> = ({ t }) => {
                                     </div>
                                 </div>
                                 
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors relative z-10">
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors relative z-10">
                                     {step.title}
                                 </h3>
                                 <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-light relative z-10">

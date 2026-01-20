@@ -58,7 +58,7 @@ const Credibility: React.FC<CredibilityProps> = ({ t }) => {
                 <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight leading-[1.1]">
                   {t.credibility.title}
                 </h2>
-                <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light mb-8">
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light mb-8">
                   {t.credibility.subtitle}
                 </p>
                 

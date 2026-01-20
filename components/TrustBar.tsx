@@ -9,8 +9,16 @@ const TrustBar: React.FC<TrustBarProps> = ({ t }) => {
   return (
     <div className="relative z-20 -mt-10 mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl p-6 md:p-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center">
+        <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl p-6 md:p-8 overflow-hidden">
+            
+            {/* Custom Border Beam Animation */}
+            <div className="absolute inset-0 rounded-2xl pointer-events-none">
+                <div className="absolute inset-0 rounded-2xl border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]">
+                    <div className="absolute aspect-square w-full bg-[conic-gradient(from_0deg,transparent_0_340deg,theme(colors.emerald.500)_360deg)] animate-border-beam [offset-anchor:calc(var(--offset)*-1%)_50%] [offset-path:rect(0_auto_auto_0_round_calc(var(--radius)*1px))]"></div>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center justify-center relative z-10">
                 
                 {/* Compliance Badge */}
                 <div className="flex items-center gap-4 justify-start group rounded-xl transition-colors cursor-default">

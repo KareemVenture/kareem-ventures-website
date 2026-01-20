@@ -8,11 +8,22 @@ interface SolutionBridgeProps {
 
 const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
   return (
-    <section id="solution" className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section id="solution" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-[#080c14] transition-colors duration-500">
       
-      {/* Technical Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-b from-transparent via-transparent to-white dark:to-slate-950"></div>
+      {/* Animated Tech Grid Background */}
+      <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+          
+          {/* Moving Grid Lines */}
+          <motion.div 
+            animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 opacity-20 dark:opacity-10 bg-[length:50px_50px]"
+            style={{
+                backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(16, 185, 129, .3) 25%, rgba(16, 185, 129, .3) 26%, transparent 27%, transparent 74%, rgba(16, 185, 129, .3) 75%, rgba(16, 185, 129, .3) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(16, 185, 129, .3) 25%, rgba(16, 185, 129, .3) 26%, transparent 27%, transparent 74%, rgba(16, 185, 129, .3) 75%, rgba(16, 185, 129, .3) 76%, transparent 77%, transparent)'
+            }}
+          ></motion.div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -23,7 +34,7 @@ const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-[10px] uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 font-bold text-[10px] uppercase tracking-widest mb-4 shadow-sm">
                 <LayoutDashboard className="w-3 h-3" />
                 Our Platform
             </span>
@@ -51,17 +62,17 @@ const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.15, duration: 0.5 }}
-                  className="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-300 group flex items-start gap-5 cursor-default"
+                  className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-300 group flex items-start gap-5 cursor-default"
                 >
                     <motion.div 
                         whileHover={{ rotate: 10, scale: 1.1 }}
-                        className="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700 shadow-sm"
+                        className="w-12 h-12 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 border border-slate-100 dark:border-slate-700 shadow-sm"
                     >
                         <card.icon className="w-6 h-6 text-slate-400 dark:text-slate-500 group-hover:text-white transition-colors" strokeWidth={1.5} />
                     </motion.div>
                     
                     <div>
-                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{card.title}</h3>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{card.title}</h3>
                         <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-light text-sm">
                             {card.description}
                         </p>
@@ -78,7 +89,7 @@ const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
               transition={{ duration: 0.8 }}
               className="relative lg:h-[600px] flex items-center justify-center"
             >
-                <div className="absolute inset-0 bg-gradient-radial from-emerald-500/10 to-transparent blur-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-radial from-emerald-500/20 to-transparent blur-3xl"></div>
                 
                 <div className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-[2rem] p-6 shadow-2xl border border-slate-100 dark:border-slate-800 animate-float">
                     

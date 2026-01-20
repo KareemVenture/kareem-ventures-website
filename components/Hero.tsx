@@ -45,12 +45,49 @@ const Hero: React.FC<HeroProps> = ({ t }) => {
   return (
     <section className="relative min-h-[95vh] flex flex-col justify-center pt-32 pb-20 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 [perspective:2000px]">
       
-      {/* --- LAYER 1: Deep Animated Gradient --- */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-emerald-50/20 to-white dark:from-slate-950 dark:via-[#051114] dark:to-slate-900 animate-gradient-x bg-[length:200%_200%] z-0"></div>
-      
+      {/* --- LAYER 1: Dynamic Aurora Background --- */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div 
+            className="absolute -inset-[10px] opacity-50 dark:opacity-40"
+            style={{
+                backgroundImage: `
+                    radial-gradient(at 0% 0%, hsla(160, 60%, 40%, 0.3) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, hsla(170, 70%, 50%, 0.2) 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, hsla(210, 60%, 40%, 0.3) 0px, transparent 50%),
+                    radial-gradient(at 0% 100%, hsla(150, 60%, 45%, 0.2) 0px, transparent 50%)
+                `,
+                filter: 'blur(60px)',
+            }}
+          ></div>
+          <motion.div 
+            animate={{
+                backgroundPosition: ['0% 0%', '100% 100%'],
+                opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{
+                duration: 20,
+                repeat: Infinity,
+                repeatType: 'reverse',
+                ease: 'linear'
+            }}
+            className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"
+          ></motion.div>
+          
+          {/* Moving Orbs */}
+          <motion.div 
+            animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px]"
+          />
+          <motion.div 
+            animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-[100px]"
+          />
+      </div>
+
       {/* --- LAYER 2: Abstract Islamic Geometry (Breathing & Rotating) --- */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* Central Rotating Geometric Mandala */}
           <motion.div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] md:w-[1200px] md:h-[1200px] opacity-[0.03] dark:opacity-[0.05]"
             animate={{ 
@@ -63,7 +100,6 @@ const Hero: React.FC<HeroProps> = ({ t }) => {
             }}
           >
              <svg viewBox="0 0 100 100" className="w-full h-full text-slate-900 dark:text-white fill-none stroke-current stroke-[0.2]">
-                {/* 8-Point Star / Rub el Hizb Geometry Simulation */}
                 <rect x="25" y="25" width="50" height="50" />
                 <rect x="25" y="25" width="50" height="50" transform="rotate(45 50 50)" />
                 <circle cx="50" cy="50" r="35" />
@@ -72,14 +108,6 @@ const Hero: React.FC<HeroProps> = ({ t }) => {
                 <path d="M50 10 L90 50 L50 90 L10 50 Z" />
              </svg>
           </motion.div>
-          
-          {/* Tiled Pattern Overlay */}
-          <div 
-            className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
-            style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          ></div>
       </div>
 
       {/* --- LAYER 3: Finance Floating Elements --- */}
@@ -143,7 +171,7 @@ const Hero: React.FC<HeroProps> = ({ t }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-xl"
+              className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed font-light max-w-xl"
             >
               {t.hero.subheadline}
             </motion.p>
