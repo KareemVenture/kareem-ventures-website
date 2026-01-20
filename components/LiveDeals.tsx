@@ -23,7 +23,7 @@ const opportunities = [
     raised: 45,
     status: "Open",
     tags: ["Social Impact", "Stable"],
-    color: "bg-blue-500"
+    color: "bg-cyan-500"
   },
   {
     title: "Aya Sophia Maintenance",
@@ -41,7 +41,7 @@ const opportunities = [
     raised: 60,
     status: "Open",
     tags: ["Equity", "Growth"],
-    color: "bg-purple-500"
+    color: "bg-teal-500"
   }
 ];
 
@@ -82,11 +82,14 @@ const LiveDeals: React.FC<LiveDealsProps> = ({ t }) => {
   return (
     <section id="opportunities" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-[#0f1218]">
       
-      {/* Dynamic Blob Background */}
+      {/* Dynamic Blob Background - Corrected Palette (Emerald/Teal/Amber) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-300/20 dark:bg-purple-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-yellow-300/20 dark:bg-amber-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-pink-300/20 dark:bg-pink-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+          {/* Emerald Blob */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-300/20 dark:bg-emerald-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+          {/* Amber/Gold Blob */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-amber-200/20 dark:bg-amber-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+          {/* Teal Blob */}
+          <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-teal-300/20 dark:bg-teal-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

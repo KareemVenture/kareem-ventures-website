@@ -8,13 +8,13 @@ interface SolutionBridgeProps {
 
 const SolutionBridge: React.FC<SolutionBridgeProps> = ({ t }) => {
   return (
-    <section id="solution" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-[#080c14] transition-colors duration-500">
+    <section id="solution" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
       
-      {/* Animated Tech Grid Background */}
+      {/* Animated Tech Grid Background - Aligned to Emerald/Slate */}
       <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           
-          {/* Moving Grid Lines */}
+          {/* Moving Grid Lines - Emerald 500 */}
           <motion.div 
             animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
