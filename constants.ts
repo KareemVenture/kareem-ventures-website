@@ -19,7 +19,7 @@ import {
   Infinity
 } from 'lucide-react';
 
-export const WHATSAPP_NUMBER = "6281234567890"; // Example number
+export const WHATSAPP_NUMBER = "6281285868783";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 const BLOG_POSTS = [
@@ -145,7 +145,7 @@ export const CONTENT: Record<string, Translations> = {
     footer: {
       contactTitle: "Contact",
       quickLinksTitle: "Company",
-      copyright: "© 2024 Kareem Ventures."
+      copyright: "© 2026 Kareem Ventures."
     }
   },
   id: {
@@ -264,7 +264,7 @@ export const CONTENT: Record<string, Translations> = {
     footer: {
       contactTitle: "Kontak",
       quickLinksTitle: "Perusahaan",
-      copyright: "© 2024 Kareem Ventures."
+      copyright: "© 2026 Kareem Ventures."
     }
   }
 };
