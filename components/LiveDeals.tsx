@@ -8,6 +8,15 @@ interface LiveDealsProps {
 
 const opportunities = [
   {
+    title: "Burdah Laundry",
+    category: "Service Industry",
+    location: "Jakarta",
+    raised: 25,
+    status: "New",
+    tags: ["SME", "Social Impact"],
+    color: "bg-blue-500"
+  },
+  {
     title: "Kebun Khaybar - Date Farm",
     category: "Agriculture",
     location: "Madinah",
@@ -24,15 +33,6 @@ const opportunities = [
     status: "Open",
     tags: ["Social Impact", "Stable"],
     color: "bg-cyan-500"
-  },
-  {
-    title: "Aya Sophia Maintenance",
-    category: "Heritage",
-    location: "Istanbul",
-    raised: 12,
-    status: "New",
-    tags: ["Cultural", "Long Term"],
-    color: "bg-amber-500"
   },
   {
     title: "Halal Logistics Hub",
