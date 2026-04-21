@@ -8,13 +8,13 @@ interface LiveDealsProps {
 
 const opportunities = [
   {
-    title: "Burdah Laundry",
-    category: "Service Industry",
+    title: "Om Chick",
+    category: "F&B / Food & Beverage",
     location: "Jakarta",
-    raised: 25,
+    raised: 30,
     status: "New",
-    tags: ["SME", "Social Impact"],
-    color: "bg-blue-500"
+    tags: ["Franchise", "Halal"],
+    color: "bg-orange-500"
   },
   {
     title: "Kebun Khaybar - Date Farm",
